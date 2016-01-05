@@ -17,5 +17,8 @@
     "gulp-util": "^3.0.7",
     "stylegen": "git+ssh://git@gitlab.gkh-setu.de:gkh/stylegen.git",
     "through2": "^2.0.0"
+  },
+  "devDependencies": {
+    "chalk": "^1.1.1"
   }
 }
