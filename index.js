@@ -1,4 +1,3 @@
-require("harmonize")();
 var fs = require('fs');
 var through2 = require('through2');
 var gutil = require('gulp-util');

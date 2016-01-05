@@ -14,7 +14,6 @@
   "author": "Falk Hoppe <falkhoppe81@gmail.com>",
   "license": "MIT",
   "dependencies": {
-    "harmonize": "^1.4.4",
     "gulp-util": "^3.0.7",
     "stylegen": "git+ssh://git@gitlab.gkh-setu.de:gkh/stylegen.git",
     "through2": "^2.0.0"
