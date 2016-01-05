@@ -11,9 +11,10 @@ module.exports = function(opts) {
 
   opts = opts || {};
   var initializationError = new gutil.PluginError('gulp-stylegen', "No Config-File given, please provide a valid stylguide.(yaml|json) file");
+  var initializationErrorFlag = true;
 
   return through2.obj(function(file, enc, callback) {
-    error = null;
+    initializationErrorFlag = false;
 
     if (file.isNull()) {
       return callback(null, file);
@@ -51,9 +52,8 @@ module.exports = function(opts) {
       return callback();
     });
 
-
   }, function (cb) {
-		if (initializationError !== null) {
+		if (initializationErrorFlag) {
       console.log(error(initializationError));
     }
 		cb();
