@@ -4,6 +4,7 @@ var gutil = require('gulp-util');
 var Styleguide = require('stylegen').Styleguide;
 var chalk = require('chalk');
 var error = chalk.bold.red;
+var success = chalk.bold.green;
 
 module.exports = function(opts) {
   'use strict';
@@ -26,19 +27,24 @@ module.exports = function(opts) {
     opts.configPath = file.path;
 
     var cwd = opts.cwd || path.basename(file.path);
+    console.log(success("initialize styleguide ..."));
     new Styleguide(opts)
     .initialize(cwd)
     .then(function(styleguide) {
+      console.log(success("preparing styleguide ..."));
       return styleguide.prepare();
     })
     .then(function(styleguide) {
+      console.log(success("reading styleguide ..."));
       return styleguide.read();
     })
     .then(function(styleguide) {
+      console.log(success("writing styleguide ..."));
       return styleguide.write();
     })
     .then(function() {
-      return callback(gutil.PluginError('gulp-stylegen', "OMGS"), file);
+      console.log(success("styleguide written"));
+      return callback();
     })
     .catch(function(e) {
       throw new gutil.PluginError('gulp-stylegen', e);
