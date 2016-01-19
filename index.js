@@ -10,7 +10,6 @@ module.exports = function(opts) {
   'use strict';
 
   opts = opts || {};
-  var initializationError = new gutil.PluginError('gulp-stylegen', "No Config-File given, please provide a valid stylguide.(yaml|json) file");
   var initializationErrorFlag = true;
 
   return through2.obj(function(file, enc, callback) {
@@ -29,6 +28,7 @@ module.exports = function(opts) {
 
     var cwd = opts.cwd || path.basename(file.path);
     console.log(success("initialize styleguide ..."));
+
     new Styleguide(opts)
     .initialize(cwd)
     .then(function(styleguide) {
@@ -48,14 +48,13 @@ module.exports = function(opts) {
       return callback();
     })
     .catch(function(e) {
-      throw new gutil.PluginError('gulp-stylegen', e);
       return callback();
     });
 
   }, function (cb) {
 		if (initializationErrorFlag) {
-      console.log(error(initializationError));
+  		return cb(new gutil.PluginError('gulp-stylegen', "No Config-File given, please provide a valid stylguide.(yaml|json) file"));
     }
-		cb();
+    return cb();
 	});
 }
