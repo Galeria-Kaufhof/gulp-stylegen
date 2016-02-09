@@ -1,37 +1,27 @@
 {
   "name": "gulp-stylegen",
-
-  "version": "0.0.0",
-
+  "version": "0.0.1",
   "description": "A gulp plugin for using stylegen in your gulp build chain",
-
   "main": "index.js",
-
   "repository": {
     "type": "git",
     "url": "git@github.com:Galeria-Kaufhof/gulp-stylegen.git"
   },
-
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-
   "keywords": [
     "gulp",
     "stylegen",
     "styleguide"
   ],
-
   "author": "Falk Hoppe <falkhoppe81@gmail.com>",
-
   "license": "MIT",
-
   "dependencies": {
     "gulp-util": "^3.0.7",
     "stylegen": "^0.0.4",
     "through2": "^2.0.0"
   },
-
   "devDependencies": {
     "chalk": "^1.1.1"
   }
