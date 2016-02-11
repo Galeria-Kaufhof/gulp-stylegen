@@ -1,6 +1,6 @@
 {
   "name": "gulp-stylegen",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "A gulp plugin for using stylegen in your gulp build chain",
   "main": "index.js",
   "repository": {
