@@ -6,6 +6,8 @@ var chalk = require('chalk');
 var error = chalk.bold.red;
 var success = chalk.bold.green;
 
+var PLUGIN_NAME = 'gulp-stylegen';
+
 module.exports = function(opts) {
   'use strict';
 
@@ -20,7 +22,7 @@ module.exports = function(opts) {
     }
 
     if (file.isStream()) {
-      this.emit('error', new gutil.PluginError('gulp-stylegen', 'Streaming not supported'));
+      this.emit('error', new gutil.PluginError(PLUGIN_NAME, 'Streaming not supported'));
       return callback();
     }
 
@@ -45,16 +47,17 @@ module.exports = function(opts) {
     })
     .then(function() {
       console.log(success("styleguide written"));
-      return callback();
+      return callback(null, file);
     })
     .catch(function(e) {
-      return callback();
+      return callback(new gutil.PluginError(PLUGIN_NAME, e));
     });
 
   }, function (cb) {
 		if (initializationErrorFlag) {
-  		return cb(new gutil.PluginError('gulp-stylegen', "No Config-File given, please provide a valid stylguide.(yaml|json) file"));
+  		return cb(new gutil.PluginError(PLUGIN_NAME, "No Config-File given, please provide a valid stylguide.(yaml|json) file"));
     }
-    return cb();
+
+    cb();
 	});
 }
