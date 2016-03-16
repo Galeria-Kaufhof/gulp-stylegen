@@ -1,4 +1,6 @@
 var fs = require('fs');
+var path = require('path');
+
 var through2 = require('through2');
 var gutil = require('gulp-util');
 var Styleguide = require('stylegen').Styleguide;
@@ -28,7 +30,7 @@ module.exports = function(opts) {
 
     opts.configPath = file.path;
 
-    var cwd = opts.cwd || path.basename(file.path);
+    var cwd = opts.cwd || path.dirname(file.path);
     console.log(success("initialize styleguide ..."));
 
     new Styleguide(opts)
